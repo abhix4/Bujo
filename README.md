@@ -14,6 +14,13 @@ npm install
 npm run dev 
 ```
 
+### Code Structure
+
+- components/ui - where all the library component lies.
+- components/chat-bot - embeddable chatbot
+- utils/mock/mock-stream - for streaming responses
+- utils/db - indexedDB 
+
 
 ## Directions
 
