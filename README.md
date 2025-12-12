@@ -1,7 +1,7 @@
 # UI Assistant
 
 An interactive chat widget that can render UI components dynamically.  
-The project supports **large chat histories (~1000 messages)** and uses **IndexedDB** for persistence to ensure smooth performance over long conversations.
+
 
 ---
 
