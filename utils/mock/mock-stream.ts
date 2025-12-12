@@ -1,7 +1,7 @@
 
 export async function* mockStreamResponse(prompt: string) {
   if (/buttons/i.test(prompt)) {
-    const intro = "Sure, here are three button variants:";
+    const intro = "Sure, here are four button variants:";
     for (const char of intro) {
       yield char;
       await sleep(30);
