@@ -6,7 +6,7 @@ export const ButtonComponent = ({ variant = "primary", label = "Button" }: any) 
       : variant === "secondary"
         ? "bg-gray-200 text-gray-900"
         : variant === "danger"
-          ? "border border-red-600 text-red-600 hover:bg-red-50"
-          : "bg-transparent border border-gray-300 text-gray-900";
+          ? "border bg-white border-red-600 text-red-600 hover:bg-red-50"
+          : "bg-white border border-gray-300 text-gray-900";
   return <button className={`${base} ${cls}`}>{label}</button>;
 };

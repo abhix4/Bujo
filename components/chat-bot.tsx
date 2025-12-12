@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { MessageCircleDashed, Send, X } from "lucide-react";
+import { MessageCircle, MessageCircleDashed, Send, X } from "lucide-react";
 import { mockStreamResponse } from "../utils/mock/mock-stream";
 import { Message } from "@/types";
 import { MessageList } from "./message";
-
+import { motion } from "motion/react"
 
 export default function UiLibraryAssistant() {
   const [open, setOpen] = useState(false);
@@ -114,17 +114,24 @@ export default function UiLibraryAssistant() {
   return (
     <div>
       {/* Launcher button */}
-      <button
-        className="fixed right-4 bottom-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#323333] hover:bg-[#323333]/90 text-white shadow-lg transition-all md:right-8 md:bottom-6 md:h-16 md:w-16"
+      <motion.button
+        className="fixed right-4 bottom-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#323333]  text-white shadow-lg transition-all md:right-8 md:bottom-6 md:h-16 md:w-16"
         onClick={() => setOpen((s) => !s)}
         aria-label={open ? "Close chat" : "Open chat"}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.95 }}
+        
       >
-        {open ? <X className="h-6 w-6" /> : <MessageCircleDashed className="h-6 w-6" />}
-      </button>
+        {open ? <MessageCircleDashed className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+      </motion.button>
 
       {/* Panel */}
       {open && (
-        <div className="fixed right-0 bottom-20 flex h-150 w-full max-w-md flex-col overflow-hidden rounded-2xl border border-[#E5E7EA] bg-[#FEFEFF] shadow-2xl md:right-8 md:bottom-24">
+        <motion.div className="fixed right-0 bottom-20 flex h-150 w-full max-w-md flex-col overflow-hidden rounded-2xl border border-[#E5E7EA] bg-[#FEFEFF] shadow-2xl md:right-8 md:bottom-24"
+        initial={{ scale: 0.9, opacity: 0 , translateY: 20}}
+        animate={{ scale: 1, opacity: 1 , translateY: 0}}
+        transition={{ type: "spring", stiffness: 1000, damping: 30, duration: 0.05 }}
+        >
           <div className="flex items-start justify-between border-b border-[#E5E7EA] px-5 py-4 bg-white">
             <div>
               <p className="text-xl font-semibold text-gray-900">Hi 👋</p>
@@ -177,7 +184,7 @@ export default function UiLibraryAssistant() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
