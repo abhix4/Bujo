@@ -25,22 +25,30 @@ export async function* mockStreamResponse(prompt: string) {
   }
 
   if (/button/i.test(prompt)) {
-    const intro = "Sure, here is a button:";
-    for (const char of intro) {
-      yield char;
-      await sleep(30);
-    }
-    yield "\n\n";
-    await sleep(500);
-    
-    const comp = {
-      type: "button",
-      props: { variant: "primary", label: "Demo Button" },
-    };
-    
-    yield "```COMPONENT_JSON\n" + JSON.stringify(comp) + "\n```";
-    return;
+  const variantMatch = prompt.match(
+    /(primary|secondary|outline|danger)\s+button/i
+  );
+
+  const variant = variantMatch ? variantMatch[1].toLowerCase() : "primary";
+
+  const intro = `Sure, here is a ${variant} button:`;
+  for (const char of intro) {
+    yield char;
+    await sleep(30);
   }
+
+  yield "\n\n";
+  await sleep(500);
+
+  const comp = {
+    type: "button",
+    props: { variant, label: `${variant[0].toUpperCase() + variant.slice(1)}` },
+  };
+
+  yield "```COMPONENT_JSON\n" + JSON.stringify(comp) + "\n```";
+  return;
+}
+
 
   if (/form/i.test(prompt)) {
     const intro = "Here is a form to collect data:";

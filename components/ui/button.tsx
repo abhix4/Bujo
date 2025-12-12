@@ -1,5 +1,7 @@
+
+
 export const ButtonComponent = ({ variant = "primary", label = "Button" }: any) => {
-  const base = "px-5 py-2 rounded-md font-medium hover:shadow-sm cursor-pointer text-sm ";
+  const base = "px-4 py-2 rounded-lg font-medium hover:shadow-md cursor-pointer text-sm ";
   const cls =
     variant === "primary"
       ? "bg-[#323232] text-white hover:bg-[#454545]"

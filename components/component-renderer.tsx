@@ -9,7 +9,7 @@ export function ComponentRenderer({ spec }: { spec: any }) {
 
   switch (spec.type) {
     case "button":
-      return <ButtonComponent {...{ variant: "primary", ...props }} />;
+      return <ButtonComponent {...{ variant: props.variant, ...props }} />;
 
     case "button-group":
       return (
