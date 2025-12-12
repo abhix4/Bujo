@@ -16,7 +16,7 @@ export async function* mockStreamResponse(prompt: string) {
         { type: "button", props: { variant: "primary", label: "Primary" } },
         { type: "button", props: { variant: "secondary", label: "Secondary" } },
         { type: "button", props: { variant: "ghost", label: "Ghost" } },
-        { type: "button", props: { variant: "danger", label: "Ghost" } },
+        { type: "button", props: { variant: "danger", label: "Danger" } },
       ],
     };
     

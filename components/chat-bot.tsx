@@ -120,6 +120,8 @@ export default function UiLibraryAssistant() {
     }
   }, [messages.length, messageCount, loadMoreMessages]);
 
+
+  // Handle sending a message
   async function handleSend() {
     if (!input.trim() || isStreaming) return;
 
