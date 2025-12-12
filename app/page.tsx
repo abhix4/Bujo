@@ -1,5 +1,6 @@
 import  UiLibraryAssistant  from "@/components/chat-bot";
 import { ButtonComponent } from "@/components/ui/button";
+import { Empty } from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
 
 export default function Home() {
@@ -19,6 +20,11 @@ export default function Home() {
           <p className="text-xl">Input</p>
           <div className="flex flex-wrap gap-4">
             <Input label="Primary" />
+          </div>
+
+          <p className="text-xl">Empty</p>
+          <div className="flex flex-wrap gap-4">
+            <Empty title="No data found" />
           </div>
         </div>
       </div>

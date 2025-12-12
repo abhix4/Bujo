@@ -1,4 +1,5 @@
 import { ButtonComponent } from "./ui/button";
+import { Empty } from "./ui/empty";
 import { Input } from "./ui/input";
 
 export function ComponentRenderer({ spec }: { spec: any }) {
@@ -34,6 +35,9 @@ export function ComponentRenderer({ spec }: { spec: any }) {
 
     case "input":
       return <Input {...{ label: "Input", ...props }} />;
+    
+    case "empty":
+      return <Empty {...{  ...props }} />;
 
     default:
       return (

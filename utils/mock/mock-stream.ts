@@ -1,7 +1,7 @@
 
 export async function* mockStreamResponse(prompt: string) {
   if (/buttons/i.test(prompt)) {
-    const intro = "Sure — here are three button variants:";
+    const intro = "Sure, here are three button variants:";
     for (const char of intro) {
       yield char;
       await sleep(30);
@@ -25,7 +25,7 @@ export async function* mockStreamResponse(prompt: string) {
   }
 
   if (/button/i.test(prompt)) {
-    const intro = "Sure — here is a button:";
+    const intro = "Sure, here is a button:";
     for (const char of intro) {
       yield char;
       await sleep(30);
@@ -77,6 +77,25 @@ export async function* mockStreamResponse(prompt: string) {
     const comp = {
       type: "input",
       props: { variant: "text", label: "Demo Input" },
+    };
+    
+    yield "```COMPONENT_JSON\n" + JSON.stringify(comp) + "\n```";
+    return;
+  }
+
+
+    if (/empty/i.test(prompt)) {
+    const intro = "Sure, here is an empty state";
+    for (const char of intro) {
+      yield char;
+      await sleep(30);
+    }
+    yield "\n\n";
+    await sleep(500);
+    
+    const comp = {
+      type: "empty",
+      props: { title: "No data found" },
     };
     
     yield "```COMPONENT_JSON\n" + JSON.stringify(comp) + "\n```";
